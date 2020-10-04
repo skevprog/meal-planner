@@ -45,12 +45,29 @@ function App() {
   const randomize = () => setMeals([...shuffle(meals)]);
 
   return (
-    <div>
-      <form onSubmit={handleOnSubmit}>
-        <input type="text" value={meal.name} onChange={handleOnChange} />
-        <button type="submit">Add Meal</button>
+    <div className="app-container">
+      <form onSubmit={handleOnSubmit} className="form">
+        <input
+          type="text"
+          value={meal.name}
+          onChange={handleOnChange}
+          placeholder="Meal name"
+        />
+        <button
+          type="submit"
+          disabled={!meal.name.length}
+        >
+          Add Meal
+        </button>
       </form>
-      <button type="button" onClick={randomize}>Randomize</button>
+      <button
+        type="button"
+        onClick={randomize}
+        className="randomize-button"
+        disabled={(meals.length < 7)}
+      >
+        Randomize
+      </button>
       <hr />
       <table>
         <tr>
